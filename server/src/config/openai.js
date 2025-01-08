@@ -1,5 +1,3 @@
-import OpenAI from 'openai';
-
 const OpenAI = require('openai');
 
 module.exports = class openai {
@@ -14,7 +12,8 @@ module.exports = class openai {
   static textCompletion({ prompt }) {
     return {
       model: 'gpt-4o-mini',
-      prompt: `${prompt}`,
+      messages: [{ role: 'user', content: `${prompt}` }],
+      // prompt: `${prompt}`,
       response_format: {
         type: 'text',
       },
